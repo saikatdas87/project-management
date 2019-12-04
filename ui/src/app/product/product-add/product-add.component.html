@@ -1,0 +1,72 @@
+<h3 *ngIf="!editMode" class="title uit-product-management-add-title">{{title}}</h3>
+<div class="card uit-product-management-add-card">
+  <div class="card-body">
+    <form [formGroup]="productForm">
+      <div class="form-group row">
+        <label for="name" class="col-sm-1 col-form-label text-right">Name</label>
+        <div class="col-sm-10">
+          <input type="name" class="form-control" id="name" formControlName="name" placeholder="Name" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="category" class="col-sm-1 col-form-label text-right">Category</label>
+        <div class="col-sm-10">
+          <input type="name" class="form-control" id="category" formControlName="category" placeholder="Category">
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-1 col-form-label text-right" for="code">Code</label>
+        <div class="col-sm-4">
+          <input aria-describedby="codeHelp" class="form-control" id="code"
+                 name="code"
+                 formControlName="code"
+                 placeholder="Code" type="text">
+        </div>
+        <label class="col-sm-2 col-form-label text-right" for="price">Price</label>
+        <div class="col-sm-4">
+          <input aria-describedby="priceHelp" class="form-control" id="price"
+                 name="price"
+                 formControlName="price"
+                 placeholder="Price" type="number" step="any">
+        </div>
+      </div>
+
+      <div class="form-group row" formArrayName="details">
+        <label class="col-sm-1 col-form-label text-right">Add Details:</label>
+        <div class="col-sm-10" style="top: 10px;">
+          <div class="form-row" *ngFor="let pds of details.controls; let i=index"
+               [formGroupName]="i">
+            <div class="col-md-4 mb-4" style="padding-right: 35px;">
+              <label for="key">Key</label>
+              <input type="text" class="form-control" id="key" formControlName="key" placeholder="Key">
+            </div>
+            <div class="col-md-5 mb-4" style="padding-left: 50px;">
+              <label for="value">Value</label>
+              <input type="text" class="form-control" id="value" formControlName="value" placeholder="Value">
+            </div>
+            <div class="col-sm-1" style="top: 30px;" *ngIf="i>0">
+              <button (click)="removeDetail(i)" class="btn btn-danger"><span aria-hidden="true"
+                                                                             class="fa fa-remove"></span>
+              </button>
+            </div>
+            <div class="col-sm-1 float-sm-right" style="top: 30px;" *ngIf="details.length -1 == i ">
+              <button (click)="addDetail()" class="btn btn-success"><span aria-hidden="true" class="fa fa-plus"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <span class="col-sm-1"></span>
+        <div class="col-sm-2">
+          <button [disabled]="!productForm.valid" class="btn btn-primary" type="submit" id="uit-product-management-add-save"
+                  (click)="save()">Save
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

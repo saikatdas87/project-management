@@ -1,0 +1,30 @@
+<div class="card uit-product-management-product-table-card">
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Category</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products" id="uit-product-{{product.id}}">
+        <td>{{ product.code }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.price | number }}</td>
+        <td>
+          <button *ngIf="showActionButtons" class="btn btn-primary" id="uit-product-table-edit" (click)="editProduct(product)">Edit</button>
+        </td>
+        <td>
+          <button *ngIf="showActionButtons" class="btn btn-primary btn-danger" id="uit-product-table-delete" (click)="deleteProduct(product)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <button *ngIf="showActionButtons" class="btn btn-success float-right" id="uit-product-table-add" routerLink="/product-add">Add New</button>
+    <button *ngIf="!showActionButtons" class="btn btn-primary float-right" id="uit-product-table-view-modal-close" (click)="modal.dismissAll()">Close</button>
+  </div>
+</div>

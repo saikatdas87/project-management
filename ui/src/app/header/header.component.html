@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-md navbar-light fixed-top uit-product-management-nav">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="uit-product-management-nav-item">
+        <a class="nav-link nav-link-color uit-product-management-nav-link-text" routerLink="/product-list"
+           routerLinkActive="uit-product-management-nav-active">List</a>
+      </li>
+      <li class="uit-product-management-nav-item">
+        <a class="nav-link uit-product-management-nav-link-text" routerLink="/product-add"
+           routerLinkActive="uit-product-management-nav-active">Create</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input
+        id="uit-product-management-typeahead-product-search"
+        type="text"
+        class="form-control"
+        [ngbTypeahead]="search"
+        placeholder="Search a product"
+        (selectItem)="select($event)"
+        #instance="ngbTypeahead"
+      />
+    </form>
+  </div>
+</nav>
+<div class="uit-product-management-dashboard-header">
+  <span class="uit-product-management-company">{{companyName}}</span>
+  <span class="uit-product-editor">{{productName}}</span>
+</div>

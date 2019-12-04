@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Product Deletion</h4>
+  <button type="button" class="close" aria-describedby="modal-title" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+ <div *ngIf="!productDeleted">
+   <p id="uit-product-delete-warning-title"><strong>Are you sure you want to delete <span class="text-primary">{{product.name}}</span> product?</strong></p>
+   <p>All product information associated to this product will be permanently deleted.
+     <span class="text-danger">This operation can not be undone.</span>
+   </p>
+ </div>
+  <div *ngIf="productDeleted">
+    <div class="alert alert-success">
+      <strong>Success!</strong> Product Deleted successfully. Close the window to continue.
+    </div>
+  </div>
+  <div *ngIf="!productDeleted && failedToDelete">
+    <div class="alert alert-danger">
+      <strong>Failed!</strong> Something went wrong... Try again.
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button *ngIf="!productDeleted" type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+  <button *ngIf="!productDeleted" type="button" class="btn btn-danger" (click)="deleteProduct(product)">Ok</button>
+  <button *ngIf="productDeleted" type="button" class="btn btn-primary" (click)="closeModal()">Close</button>
+</div>
