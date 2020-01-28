@@ -14,7 +14,7 @@ import {ProductListComponent} from "../product/product-list/product-list.compone
 export class HeaderComponent {
 
   @ViewChild('instance', {static: true}) instance: NgbTypeahead | undefined;
-  companyName: string = 'Canter Oy';
+  companyName: string = 'XYZ Oy';
   productName: string = 'Product Editor';
 
   search = (text$: Observable<string>) =>
